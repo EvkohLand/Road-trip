@@ -16,14 +16,17 @@ Sans produit avec URL valide, la page présente des guides pratiques. Aucun iden
 
 ## Installations (setups)
 
-Une installation = une photo réelle + la liste de tous les produits nécessaires pour la reproduire. Dans `dist/content.js`, tableau `setups` :
+Une installation = une photo réelle + la liste de tous les produits nécessaires pour la reproduire. Source unique : `content/setups.json` (`asin` = code de 10 caractères après `/dp/` dans l’adresse Amazon). `scripts/build-pages.py` la rend en HTML statique sur l’accueil et sur une page dédiée `installations/<slug>.html`, avec le lien `https://www.amazon.fr/dp/<ASIN>?tag=roadtriplaura-21`. Pas de JavaScript : robots et aperçus de partage voient le contenu.
 
-```js
-{ category: 'CINÉMA SOUS LA TENTE', title: '…', description: '…', image: './assets/setup-tv.jpg', alt: '…',
-  items: [ { role: 'L’écran', name: 'ARZOPA écran portable', url: amazon('B0CJCBQYDY') } ] }
-```
+Vignette produit : `dist/assets/products/<ASIN>.jpg`, 128×128, fond blanc. Pas de prix affichés : le règlement Amazon interdit les prix non actualisés en direct.
 
-`amazon('ASIN')` construit le lien avec l’identifiant Partenaires `roadtriplaura-21`. L’ASIN est le code de 10 caractères après `/dp/` dans l’adresse du produit Amazon. Pas de prix affichés : le règlement Amazon interdit les prix non actualisés en direct. La mention obligatoire « En tant que Partenaire Amazon… » est dans `dist/index.html`.
+## Référencement et partage
+
+Généré par `scripts/build-pages.py` pour chaque page : balise canonical, Open Graph + Twitter card (image 1200×630), données structurées JSON-LD (WebSite, Article, BreadcrumbList, ItemList), `sitemap.xml`, page `404.html` non indexée. Les descriptions sont coupées à 158 caractères ; le suffixe « | Road Trip » n’est ajouté que si le titre reste court. `scripts/check-site.py` bloque la publication si une page perd l’un de ces éléments.
+
+Images dérivées (aperçus 1200×630, WebP, versions mobiles, icônes) : `scripts/build-images.sh`, à relancer après changement d’une photo source.
+
+Pas de `robots.txt` : sur un site de projet GitHub Pages, les robots ne le lisent qu’à la racine du domaine (`evkohland.github.io/robots.txt`), hors de ce dépôt. Déclarer le sitemap dans Google Search Console.
 
 ## Publication
 

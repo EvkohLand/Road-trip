@@ -24,6 +24,25 @@ for p in pages:
     assert mention in html, p
     assert '<html lang="fr">' in html, p
     assert 'fonts.googleapis.com' not in html, p
+    # SEO / social preview contract: every page must keep these (see scripts/build-pages.py).
+    import re
+    SITE='https://evkohland.github.io/Road-trip/'
+    head=html[:html.index('</head>')]
+    assert html.count('<h1')==1 or p.name=='index.html', (p,'one h1')
+    assert re.search(r'<title>[^<]{10,80}</title>',head), (p,'title')
+    d=re.search(r'<meta name="description" content="([^"]{50,160})">',head); assert d, (p,'description 50-160')
+    canon=re.search(r'<link rel="canonical" href="([^"]+)">',head); assert canon and canon.group(1).startswith(SITE), (p,'canonical')
+    for prop in ('og:title','og:description','og:url','og:image','og:type','og:locale','twitter:card'):
+        assert f'"{prop}"' in head, (p,prop)
+    img=re.search(r'property="og:image" content="([^"]+)"',head).group(1)
+    assert (dist/img.removeprefix(SITE)).is_file(), (p,'og:image file',img)
+    for block in re.findall(r'<script type="application/ld\+json">(.*?)</script>',head,re.S): json.loads(block)
+    if p.name!='404.html': assert 'noindex' not in head, (p,'indexable')
+sitemap=(dist/'sitemap.xml').read_text()
+for p in pages:
+    rel=p.relative_to(dist).as_posix()
+    if rel=='404.html': continue
+    assert f'<loc>https://evkohland.github.io/Road-trip/{"" if rel=="index.html" else rel}</loc>' in sitemap, (rel,'missing from sitemap')
 assert len(json.loads((root/'content/guides.json').read_text()))==10
 assert 'fonts.googleapis.com' not in (dist/'style.css').read_text()
-print(f'{len(pages)} HTML pages: local links, image alternatives, language and Amazon disclosure verified.')
+print(f'{len(pages)} HTML pages: local links, image alternatives, language, Amazon disclosure, SEO tags, structured data and sitemap verified.')

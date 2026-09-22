@@ -17,39 +17,6 @@
     try { const url = new URL(value); return url.protocol === 'https:' && !url.username && !url.password ? url.href : null; }
     catch { return null; }
   }
-  // Setups: photo of a real installation plus the list of every product it uses.
-  const setupContainer = document.getElementById('setups');
-  for (const setup of window.ROAD_TRIP?.setups || []) {
-    const card = element('article', 'setup-card');
-    const figure = element('div', 'setup-photo');
-    const img = element('img', '');
-    img.src = setup.image; img.alt = setup.alt || ''; img.loading = 'lazy'; img.width = 1400; img.height = 1050;
-    figure.append(img);
-    const body = element('div', 'setup-body');
-    body.append(element('span', 'product-category', setup.category), element('h3', '', setup.title), element('p', '', setup.description));
-    const list = element('ol', 'setup-items');
-    for (const item of setup.items || []) {
-      const li = element('li', '');
-      const url = validUrl(item.url);
-      const target = url ? element('a', 'setup-item') : element('div', 'setup-item pending');
-      if (url) { target.href = url; target.target = '_blank'; target.rel = 'sponsored nofollow noopener'; target.referrerPolicy = 'strict-origin-when-cross-origin'; }
-      // Product thumbnail: white-background packshot stored in assets/products/ (see CREDITS.md).
-      if (item.image) {
-        const thumb = element('img', 'setup-thumb');
-        thumb.src = item.image; thumb.alt = ''; thumb.loading = 'lazy'; thumb.width = 64; thumb.height = 64;
-        target.append(thumb);
-      }
-      const text = element('span', 'setup-text');
-      text.append(element('span', 'setup-role', item.role), element('span', 'setup-name', item.name));
-      const arrow = element('span', 'setup-arrow', url ? 'Amazon ↗' : 'À venir');
-      target.append(text, arrow);
-      li.append(target);
-      list.append(li);
-    }
-    body.append(list, element('span', 'link-meta', 'Publicité · liens affiliés Amazon · nouvel onglet'));
-    card.append(figure, body);
-    setupContainer?.append(card);
-  }
   const activeProducts = products.filter(product => validUrl(product.url));
   if (!activeProducts.length) return; // Keep useful static guides when no product is configured.
   container.replaceChildren();

@@ -1,0 +1,24 @@
+{
+  "amazon_tag": "roadtriplaura-21",
+  "setups": [
+    {
+      "slug": "cinema-tente-de-toit",
+      "category": "CINÉMA SOUS LA TENTE",
+      "title": "Une vraie soirée série, sur le toit de la voiture.",
+      "seo_title": "Installer un écran dans une tente de toit : le matériel",
+      "seo_description": "Écran portable au plafond de la tente de toit, barre de son, box 4K et station électrique : la liste complète du matériel pour un cinéma en road trip.",
+      "description": "Écran fixé au plafond de la tente de toit, son sous l’écran, streaming dans la télécommande, le tout alimenté par une station électrique. Tout se range en quelques minutes.",
+      "image": "assets/setup-tv.jpg",
+      "image_width": 1400,
+      "image_height": 1050,
+      "alt": "Écran fixé au plafond d’une tente de toit, avec une barre de son dessous, devant un couple allongé au coucher du soleil",
+      "items": [
+        { "role": "L’écran", "name": "ARZOPA écran portable 144 Hz Full HD", "asin": "B0CJCBQYDY" },
+        { "role": "La fixation", "name": "CreaDream bras articulé en aluminium à pince", "asin": "B0DHXCRRZT" },
+        { "role": "Le son", "name": "ZETIY barre de son USB à clipser sur l’écran", "asin": "B0D7ZYDDKL" },
+        { "role": "Le streaming", "name": "Xiaomi Mi Box S 4K", "asin": "B07X3R1S7S" },
+        { "role": "L’énergie", "name": "BLUETTI Elite 100 V2 station électrique 1024 Wh", "asin": "B0FF9X6QCK" }
+      ]
+    }
+  ]
+}
