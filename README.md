@@ -59,3 +59,4 @@ python3 -m http.server 8080 --directory dist
 Les articles sont dans `content/guides.json`. Exécuter `python3 scripts/build-pages.py` après modification et versionner les pages HTML générées. Le workflow valide les liens locaux avec `python3 scripts/check-site.py` avant publication. Les articles restent lisibles sans JavaScript.
 
 Lire `docs/amazon-compliance.md` pour les règles de maintenance et les points restant à compléter. Ne pas présenter ce dépôt comme une certification Amazon ou juridique.
+
