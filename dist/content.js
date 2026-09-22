@@ -23,7 +23,7 @@ window.ROAD_TRIP = {
         { role: 'L’écran', name: 'ARZOPA écran portable 144 Hz Full HD', url: amazon('B0CJCBQYDY') },
         { role: 'La fixation', name: 'CreaDream bras articulé en aluminium à pince', url: amazon('B0DHXCRRZT') },
         { role: 'Le son', name: 'ZETIY barre de son USB à clipser sur l’écran', url: amazon('B0D7ZYDDKL') },
-        { role: 'Le streaming', name: 'Amazon Fire TV Stick 4K Select', url: amazon('B0CN41GMDK') },
+        { role: 'Le streaming', name: 'Xiaomi Mi Box S 4K', url: amazon('B07X3R1S7S') },
         { role: 'L’énergie', name: 'BLUETTI AC70 station électrique 768 Wh', url: amazon('B0CCDKQ35N') }
       ]
     }
