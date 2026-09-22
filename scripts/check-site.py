@@ -43,6 +43,6 @@ for p in pages:
     rel=p.relative_to(dist).as_posix()
     if rel=='404.html': continue
     assert f'<loc>https://evkohland.github.io/Road-trip/{"" if rel=="index.html" else rel}</loc>' in sitemap, (rel,'missing from sitemap')
-assert len(json.loads((root/'content/guides.json').read_text()))==10
+assert len(json.loads((root/'content/guides.json').read_text()))==11
 assert 'fonts.googleapis.com' not in (dist/'style.css').read_text()
 print(f'{len(pages)} HTML pages: local links, image alternatives, language, Amazon disclosure, SEO tags, structured data and sitemap verified.')
