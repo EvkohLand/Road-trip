@@ -1,7 +1,9 @@
 /* Modifiez ce fichier pour ajouter vos produits et vos vrais liens affiliés.
-   Une URL vide affiche « Sélection à venir » sans créer de faux lien.
+   Sans URL valide, la sélection affiche des guides utiles.
    Remplacez aussi le titre et la description par le produit réellement choisi.
-   affiliate: false permet d'ajouter un lien classique non rémunéré. */
+   Collez les liens Amazon générés par SiteStripe, sans modifier leur identifiant.
+   Amazon.fr et amzn.to sont automatiquement signalés comme liens affiliés.
+   Ne pas ajouter de prix, de disponibilité, de notes ou d'avis Amazon copiés. */
 window.ROAD_TRIP = {
   products: [
     { category: 'ÉNERGIE', icon: 'energy', title: 'L’autonomie, où que l’on soit.', description: 'Stations électriques et solutions de recharge pour garder un peu d’énergie, même loin des prises.', url: '', merchant: '', affiliate: true },

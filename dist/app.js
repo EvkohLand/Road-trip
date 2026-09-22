@@ -14,10 +14,13 @@
     return node;
   };
   function validUrl(value) {
-    try { const url = new URL(value); return ['https:', 'http:'].includes(url.protocol) ? url.href : null; }
+    try { const url = new URL(value); return url.protocol === 'https:' && !url.username && !url.password ? url.href : null; }
     catch { return null; }
   }
-  for (const product of products) {
+  const activeProducts = products.filter(product => validUrl(product.url));
+  if (!activeProducts.length) return; // Keep useful static guides when no product is configured.
+  container.replaceChildren();
+  for (const product of activeProducts) {
     const card = element('article', 'product-card');
     const top = element('div', 'product-top');
     const icon = element('div', 'product-icon');
@@ -31,9 +34,13 @@
       const link = element('a', 'product-link');
       link.href = url;
       link.target = '_blank';
-      link.rel = product.affiliate ? 'sponsored nofollow noopener noreferrer' : 'noopener noreferrer';
-      const label = element('span', '', product.merchant ? `Découvrir chez ${product.merchant}` : 'Découvrir le produit');
-      label.append(element('span', 'link-meta', product.affiliate ? 'Lien affilié · nouvel onglet' : 'Nouvel onglet'));
+      const host = new URL(url).hostname.toLowerCase();
+      const isAmazon = host === 'amzn.to' || host === 'amazon.fr' || host.endsWith('.amazon.fr');
+      const isAffiliate = isAmazon || product.affiliate;
+      link.rel = isAffiliate ? 'sponsored nofollow noopener' : 'noopener';
+      link.referrerPolicy = 'strict-origin-when-cross-origin';
+      const label = element('span', '', isAmazon ? 'Voir sur Amazon' : (product.merchant ? `Découvrir chez ${product.merchant}` : 'Découvrir le produit'));
+      label.append(element('span', 'link-meta', isAffiliate ? 'Publicité · lien affilié · nouvel onglet' : 'Nouvel onglet'));
       const arrow = element('span', '', '↗'); arrow.setAttribute('aria-hidden', 'true');
       link.append(label, arrow);
       body.append(link);

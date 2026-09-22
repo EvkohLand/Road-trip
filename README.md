@@ -12,7 +12,7 @@ Modifier `dist/content.js` dans GitHub puis enregistrer sur `main`. Chaque entr�
 
 Remplacer l’URL d’exemple par le vrai lien fourni par votre programme. Les valeurs `icon` disponibles sont `energy`, `cooking`, `comfort`. Ajouter ou retirer des entrées pour modifier la sélection. Les cartes initiales sont des catégories éditoriales, pas des avis sur des produits testés. Remplacer leurs textes lorsque les produits sont choisis.
 
-Une URL vide ou invalide affiche « Sélection à venir ». Aucun identifiant d’affiliation n’est inventé. Les liens affiliés actifs portent `rel="sponsored nofollow noopener noreferrer"` et une mention explicite. Les textes sont insérés avec `textContent`.
+Sans produit avec URL valide, la page présente des guides pratiques. Aucun identifiant d’affiliation n’est inventé. Les liens affiliés actifs portent `rel="sponsored nofollow noopener"` et une mention explicite. Les textes sont insérés avec `textContent`.
 
 ## Publication
 
@@ -29,7 +29,7 @@ Tous les fichiers utilisent des chemins relatifs compatibles avec le sous-réper
 - Couleurs et mise en page responsive : `dist/style.css`
 - Image : `dist/assets/road.jpg` (crédit dans `CREDITS.md`)
 
-Polices Google Fonts : DM Sans et Manrope, avec repli sans-serif. Aucun cookie applicatif ni stockage local. Les liens marchands ouvrent un nouvel onglet. Compléter les informations d’éditeur adaptées à votre statut avant une exploitation commerciale.
+Polices système, sans requête Google Fonts. Aucun cookie applicatif ni stockage local. Les liens marchands ouvrent un nouvel onglet. Compléter les informations d’éditeur adaptées à votre statut avant une exploitation commerciale.
 
 ## Vérification locale
 
@@ -38,3 +38,10 @@ node --check dist/app.js
 node --check dist/content.js
 python3 -m http.server 8080 --directory dist
 ```
+
+
+## Contenu éditorial et conformité
+
+Les articles sont dans `content/guides.json`. Exécuter `python3 scripts/build-pages.py` après modification et versionner les pages HTML générées. Le workflow valide les liens locaux avec `python3 scripts/check-site.py` avant publication. Les articles restent lisibles sans JavaScript.
+
+Lire `docs/amazon-compliance.md` pour les règles de maintenance et les points restant à compléter. Ne pas présenter ce dépôt comme une certification Amazon ou juridique.

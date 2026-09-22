@@ -18,6 +18,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Build and verify editorial pages
+        run: |
+          python3 scripts/build-pages.py
+          python3 scripts/check-site.py
       - name: Verify JavaScript
         run: |
           node --check dist/app.js
