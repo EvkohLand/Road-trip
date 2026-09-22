@@ -14,6 +14,17 @@ Remplacer l’URL d’exemple par le vrai lien fourni par votre programme. Les v
 
 Sans produit avec URL valide, la page présente des guides pratiques. Aucun identifiant d’affiliation n’est inventé. Les liens affiliés actifs portent `rel="sponsored nofollow noopener"` et une mention explicite. Les textes sont insérés avec `textContent`.
 
+## Installations (setups)
+
+Une installation = une photo réelle + la liste de tous les produits nécessaires pour la reproduire. Dans `dist/content.js`, tableau `setups` :
+
+```js
+{ category: 'CINÉMA SOUS LA TENTE', title: '…', description: '…', image: './assets/setup-tv.jpg', alt: '…',
+  items: [ { role: 'L’écran', name: 'ARZOPA écran portable', url: amazon('B0CJCBQYDY') } ] }
+```
+
+`amazon('ASIN')` construit le lien avec l’identifiant Partenaires `roadtriplaura-21`. L’ASIN est le code de 10 caractères après `/dp/` dans l’adresse du produit Amazon. Pas de prix affichés : le règlement Amazon interdit les prix non actualisés en direct. La mention obligatoire « En tant que Partenaire Amazon… » est dans `dist/index.html`.
+
 ## Publication
 
 Dans **Settings → Pages → Build and deployment → Source**, sélectionner **GitHub Actions**. Le workflow `.github/workflows/pages.yml` publie seulement `dist/` à chaque push sur `main`. La première activation peut demander de relancer le workflow depuis **Actions → Deploy GitHub Pages → Run workflow**.
