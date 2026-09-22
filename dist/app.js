@@ -33,7 +33,13 @@
       const url = validUrl(item.url);
       const target = url ? element('a', 'setup-item') : element('div', 'setup-item pending');
       if (url) { target.href = url; target.target = '_blank'; target.rel = 'sponsored nofollow noopener'; target.referrerPolicy = 'strict-origin-when-cross-origin'; }
-      const text = element('span', '');
+      // Product thumbnail: white-background packshot stored in assets/products/ (see CREDITS.md).
+      if (item.image) {
+        const thumb = element('img', 'setup-thumb');
+        thumb.src = item.image; thumb.alt = ''; thumb.loading = 'lazy'; thumb.width = 64; thumb.height = 64;
+        target.append(thumb);
+      }
+      const text = element('span', 'setup-text');
       text.append(element('span', 'setup-role', item.role), element('span', 'setup-name', item.name));
       const arrow = element('span', 'setup-arrow', url ? 'Amazon ↗' : 'À venir');
       target.append(text, arrow);

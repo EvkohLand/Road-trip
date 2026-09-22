@@ -20,11 +20,11 @@ window.ROAD_TRIP = {
       image: './assets/setup-tv.jpg',
       alt: 'Écran fixé au plafond d’une tente de toit, avec une barre de son dessous, devant un couple allongé au coucher du soleil',
       items: [
-        { role: 'L’écran', name: 'ARZOPA écran portable 144 Hz Full HD', url: amazon('B0CJCBQYDY') },
-        { role: 'La fixation', name: 'CreaDream bras articulé en aluminium à pince', url: amazon('B0DHXCRRZT') },
-        { role: 'Le son', name: 'ZETIY barre de son USB à clipser sur l’écran', url: amazon('B0D7ZYDDKL') },
-        { role: 'Le streaming', name: 'Xiaomi Mi Box S 4K', url: amazon('B07X3R1S7S') },
-        { role: 'L’énergie', name: 'BLUETTI AC70 station électrique 768 Wh', url: amazon('B0CCDKQ35N') }
+        { role: 'L’écran', name: 'ARZOPA écran portable 144 Hz Full HD', url: amazon('B0CJCBQYDY'), image: './assets/products/B0CJCBQYDY.jpg' },
+        { role: 'La fixation', name: 'CreaDream bras articulé en aluminium à pince', url: amazon('B0DHXCRRZT'), image: './assets/products/B0DHXCRRZT.jpg' },
+        { role: 'Le son', name: 'ZETIY barre de son USB à clipser sur l’écran', url: amazon('B0D7ZYDDKL'), image: './assets/products/B0D7ZYDDKL.jpg' },
+        { role: 'Le streaming', name: 'Xiaomi Mi Box S 4K', url: amazon('B07X3R1S7S'), image: './assets/products/B07X3R1S7S.jpg' },
+        { role: 'L’énergie', name: 'BLUETTI AC70 station électrique 768 Wh', url: amazon('B0CCDKQ35N'), image: './assets/products/B0CCDKQ35N.jpg' }
       ]
     }
   ],
